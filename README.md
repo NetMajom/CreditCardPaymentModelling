@@ -1,6 +1,20 @@
-# CreditCardPaymentModelling
+# Modelling Credit Card Payment With Angular and NgRx
+
+![screenshot](screenshot.gif)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+
+1. Credit card modelling with the following details:
+    * Card Number
+    * Cald Holders
+    * Expiration Date
+    * Security code
+    * Amount
+2. NgRx State Management usage
+3. Payment Service with POST request (The POST request is just a sample)
+4. The payment is in a new component, which animated, and checked by reactive form
+5. The Payment page open from the app component
+6. State manegament displayed, to make sure thats working
 
 ## Development server
 

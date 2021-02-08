@@ -1,0 +1,113 @@
+<section style="height: 110vh">
+  <div class="scene">
+    <!--region Credit Card-->
+    <div id="card_wrapper">
+      <div class="card_holder card--front">
+        <div>
+          <img src="/assets/images/fcmb.jpg" alt="Logo">
+          <img src="/assets/images/ship.jpg" alt="Strip">
+
+          <span id="card_number">0000 0000 0000</span>
+          <div id="validity">
+            <span id="card_bin">0000</span>
+            <div id="date_holder">
+              <div>
+                <span>VALID</span>
+                <span>THRU</span>
+              </div>
+              <span id="card_month">mm</span> / <span id="card_year">yy</span><br>
+            </div>
+            <img src="/assets/images/verve.png" alt="Card type">
+          </div>
+
+          <div>
+            <span id="card_name">Card User Name</span>
+          </div>
+        </div>
+      </div>
+      <div class="card_holder card--back">
+        <span id="signature">SJP-7463-9394</span>
+        <div class="">
+        </div>
+        <div class="">
+          <span>AUTHORISED SIGNATURE</span>
+          <span>NOT VALID UNLES SIGNED</span>
+        </div>
+        <div>
+          <span id="card_cvs">CSV</span>
+        </div>
+        <div id="terms">
+          <p>By using this card, the Cardholder agrees to all the terms and conditions under which it was issued. This card is issued by and remains the property bank Plc.</p>
+          <p>
+            <span>For assistance and information, please call</span>
+            <span id="number">+234(0) 9066027359 Crist, 80 4785 3038</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--endregion-->
+
+    <!--region Input fields-->
+    <form [formGroup]="payForm">
+      <div id="inputs_holder">
+        <div id="card_number_fields_holder" class="number">
+          <label for="card_number_field">Number</label>
+          <input type="text" id="card_number_field" tabindex="1"
+                 data-index="0" placeholder="8746  8282  8383"
+                 formControlName="creditCardNumber" name="creditCardNumber">
+          <app-field-error-display [displayError]="isFieldValid('creditCardNumber')"
+                                    errorMsg="* Please enter the card number"></app-field-error-display>
+        </div>
+
+        <div class="flex_spacer">
+          <div class="date" style="margin: 0 auto">
+            <label for="card_month_field">Date</label>
+            <input type="text" id="card_month_field" tabindex="3"
+                   placeholder="mm"
+                    formControlName="expirationMonth" name="expirationMonth"> /
+            <app-field-error-display [displayError]="isFieldValid('cardCVVNumber')"
+                                     errorMsg="* Please enter the CV"></app-field-error-display>
+            <input type="text" name="expirationYear"
+                   id="card_year_field" tabindex="4" placeholder="yy"
+                   formControlName="expirationYear" name="expirationYear">
+            <app-field-error-display [displayError]="isFieldValid('cardCVVNumber')"
+                                     errorMsg="* Please enter the CV"></app-field-error-display>
+          </div>
+          <div class="cvs" style="margin: 0 auto">
+            <label for="card_cvs_field">CVS</label>
+            <input type="text" name="card_cvs_field"
+                   id="card_cvs_field" tabindex="5" placeholder="123"
+                  formControlName="securityCode" name="cardCVVNumber">
+            <app-field-error-display [displayError]="isFieldValid('cardCVVNumber')"
+                                     errorMsg="* Please enter the CV"></app-field-error-display>
+          </div>
+        </div>
+
+        <div class="name">
+          <label for="card_name_field">Name</label>
+          <input type="text" id="card_name_field" tabindex="6"
+                 placeholder="John Doe"
+                 formControlName="cardHolderName" name="cardHolderName">
+          <app-field-error-display [displayError]="isFieldValid('cardHolderName')"
+                                   errorMsg="* Please enter the card holder name"></app-field-error-display>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" id="amount" tabindex="7" min="0"
+                   formControlName="amount" placeholder="Amount">
+            <app-field-error-display [displayError]="isFieldValid('amount')"
+                                     errorMsg="* Please enter the amount"></app-field-error-display>
+          </div>
+        </div>
+
+        <div>
+          <button [disabled]="payForm.invalid" (click)="submitPayForm()"
+                  class="btn btn-primary btn-lg">Send Payment</button>
+        </div>
+      </div>
+    </form>
+    <!--endregion-->
+  </div>
+</section>

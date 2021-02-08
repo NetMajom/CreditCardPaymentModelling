@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Observable} from "rxjs";
+import {CreditCard} from "./models/credit-card";
+import {PayingService} from "./services/paying.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CreditCardPaymentModelling';
+  public title = 'Credit Card Payment Modelling';
+  public position = { X: 'Right' };
+  public creditCard$: Observable<CreditCard | undefined>;
+
+  constructor(private payingService: PayingService) {
+    this.creditCard$ = payingService.creditCardData$;
+  }
 }
